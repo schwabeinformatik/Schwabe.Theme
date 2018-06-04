@@ -1,5 +1,5 @@
 {
-    "name": "cm/neos-thememodule",
+    "name": "schwabe/theme",
     "type": "neos-plugin",
     "license": "GPL-3.0-or-later",
     "description": "Backend module to customize supported themes / site packages",
