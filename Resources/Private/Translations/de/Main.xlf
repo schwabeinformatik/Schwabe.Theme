@@ -36,7 +36,7 @@
             </trans-unit>
             <trans-unit id="textarea.scss.label">
                 <source>Your custom scss code to append: (Press Ctrl+Space for code completion)</source>
-                <target>Eigener SCCS-Code (wird angehängt): (Strg+Leertaste drücken für Code-Vervollständigung)</target>
+                <target>Eigener SCSS-Code (wird angehängt): (Strg+Leertaste drücken für Code-Vervollständigung)</target>
             </trans-unit>
             <trans-unit id="textarea.css.label">
                 <source>Your custom css code to append: (Press Ctrl+Space for code completion)</source>
