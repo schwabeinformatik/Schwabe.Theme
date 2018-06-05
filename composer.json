@@ -9,12 +9,12 @@
     },
     "autoload": {
         "psr-4": {
-            "CM\\Neos\\ThemeModule\\": "Classes"
+            "Schwabe\\Theme\\": "Classes"
         }
     },
     "extra": {
         "neos": {
-            "package-key": "CM.Neos.ThemeModule"
+            "package-key": "Schwabe.Theme"
         }
     }
 }

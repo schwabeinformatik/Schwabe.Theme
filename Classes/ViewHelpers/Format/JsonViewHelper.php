@@ -1,8 +1,8 @@
 <?php
-namespace CM\Neos\ThemeModule\ViewHelpers\Format;
+namespace Schwabe\Theme\ViewHelpers\Format;
 
 /*
- * This file is part of the CM.Neos.ThemeModule package.
+ * This file is part of the Schwabe.Theme package.
  *
  * (c) 2017, Alexander Kappler
  *

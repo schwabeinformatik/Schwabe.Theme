@@ -1,8 +1,8 @@
 <?php
-namespace CM\Neos\ThemeModule\Domain\Repository;
+namespace Schwabe\Theme\Domain\Repository;
 
 /*
- * This file is part of the CM.Neos.ThemeModule package.
+ * This file is part of the Schwabe.Theme package.
  *
  * (c) 2017, Alexander Kappler
  *
@@ -11,7 +11,7 @@ namespace CM\Neos\ThemeModule\Domain\Repository;
  * source code.
  */
 
-use CM\Neos\ThemeModule\Domain\Model\Settings;
+use Schwabe\Theme\Domain\Model\Settings;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Persistence\Doctrine\Repository;
 

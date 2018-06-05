@@ -1,8 +1,8 @@
 <?php
-namespace CM\Neos\ThemeModule\Service;
+namespace Schwabe\Theme\Service;
 
 /*
- * This file is part of the CM.Neos.ThemeModule package.
+ * This file is part of the Schwabe.Theme package.
  *
  * (c) 2017, Alexander Kappler
  *
@@ -11,9 +11,9 @@ namespace CM\Neos\ThemeModule\Service;
  * source code.
  */
 
-use CM\Neos\ThemeModule\Domain\Model\Font;
-use CM\Neos\ThemeModule\Domain\Model\Settings;
-use CM\Neos\ThemeModule\FileUtility;
+use Schwabe\Theme\Domain\Model\Font;
+use Schwabe\Theme\Domain\Model\Settings;
+use Schwabe\Theme\FileUtility;
 use Leafo\ScssPhp\Compiler;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Log\SystemLoggerInterface;
@@ -29,7 +29,7 @@ class Compile
     protected $systemLogger;
 
     /**
-     * @Flow\InjectConfiguration(package="CM.Neos.ThemeModule")
+     * @Flow\InjectConfiguration(package="Schwabe.Theme")
      * @var array
      */
     protected $configuration;

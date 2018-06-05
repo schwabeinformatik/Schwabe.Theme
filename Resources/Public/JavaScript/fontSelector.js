@@ -4,7 +4,7 @@
 $( document ).ready(function () {
     var fonts = {},
         savedValues = [],
-        _$formSelects = $('.cm-neos-thememodule-custom-font-family-selector'),
+        _$formSelects = $('.schwabe-theme-custom-font-family-selector'),
         htmlCheckboxOpen = '<div class="checkbox"><label>',
         htmlCheckboxClose = '</label></div>';
 
@@ -79,7 +79,7 @@ $( document ).ready(function () {
                         }
                     });
 
-                    $(this).parents('.font-extra-root').find('.cm-neos-thememodule-custom-font-family-hidden.variants').val(JSON.stringify(hiddenVariants));
+                    $(this).parents('.font-extra-root').find('.schwabe-theme-custom-font-family-hidden.variants').val(JSON.stringify(hiddenVariants));
                 });
             });
         }
@@ -126,7 +126,7 @@ $( document ).ready(function () {
 
             fontDetails = fonts[selectCategory].find(findFont);
 
-            _$this.parent().find('.cm-neos-thememodule-custom-font-family-hidden.variants').val(null);
+            _$this.parent().find('.schwabe-theme-custom-font-family-hidden.variants').val(null);
 
             buildHtml(fontDetails,selectId);
         });

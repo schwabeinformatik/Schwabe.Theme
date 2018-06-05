@@ -1,8 +1,8 @@
 <?php
-namespace CM\Neos\ThemeModule\Fusion;
+namespace Schwabe\Theme\Fusion;
 
 /*
- * This file is part of the CM.Neos.ThemeModule package.
+ * This file is part of the Schwabe.Theme package.
  *
  * (c) 2017, Alexander Kappler
  *
@@ -11,11 +11,11 @@ namespace CM\Neos\ThemeModule\Fusion;
  * source code.
  */
 
-use CM\Neos\ThemeModule\Domain\Model\Font;
-use CM\Neos\ThemeModule\Domain\Repository\SettingsRepository;
-use CM\Neos\ThemeModule\Service\Build;
-use CM\Neos\ThemeModule\Service\Compile;
-use CM\Neos\ThemeModule\Service\Request;
+use Schwabe\Theme\Domain\Model\Font;
+use Schwabe\Theme\Domain\Repository\SettingsRepository;
+use Schwabe\Theme\Service\Build;
+use Schwabe\Theme\Service\Compile;
+use Schwabe\Theme\Service\Request;
 use Neos\Flow\Annotations as Flow;
 use Neos\Fusion\FusionObjects\AbstractFusionObject;
 
@@ -24,7 +24,7 @@ class FontImplementation extends AbstractFusionObject
     const GOOGLE_WEBFONT_API = '//fonts.googleapis.com/css';
 
     /**
-     * @Flow\InjectConfiguration(package="CM.Neos.ThemeModule")
+     * @Flow\InjectConfiguration(package="Schwabe.Theme")
      * @var array
      */
     protected $configuration;

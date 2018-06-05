@@ -1,8 +1,8 @@
 <?php
-namespace CM\Neos\ThemeModule\Service;
+namespace Schwabe\Theme\Service;
 
 /*
- * This file is part of the CM.Neos.ThemeModule package.
+ * This file is part of the Schwabe.Theme package.
  *
  * (c) 2017, Alexander Kappler
  *
@@ -11,9 +11,9 @@ namespace CM\Neos\ThemeModule\Service;
  * source code.
  */
 
-use CM\Neos\ThemeModule\Domain\Model\Font;
-use CM\Neos\ThemeModule\Domain\Model\Settings;
-use CM\Neos\ThemeModule\Domain\Repository\SettingsRepository;
+use Schwabe\Theme\Domain\Model\Font;
+use Schwabe\Theme\Domain\Model\Settings;
+use Schwabe\Theme\Domain\Repository\SettingsRepository;
 use Neos\Cache\Frontend\VariableFrontend;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Configuration\ConfigurationManager;
@@ -27,12 +27,12 @@ use Neos\Utility\Arrays;
 
 class Build
 {
-    const CACHE_IDENTIFIER = 'cm-neos-thememodule-fonts-json';
+    const CACHE_IDENTIFIER = 'schwabe-theme-fonts-json';
     const GWF_SERVER = 'http://gwf.coders.market/api/v1';
     const TOKEN = '061207df18a4dcaa21e2a893ca160e87fcc46227';
 
     /**
-     * @Flow\InjectConfiguration(package="CM.Neos.ThemeModule")
+     * @Flow\InjectConfiguration(package="Schwabe.Theme")
      * @var array
      */
     protected $configuration;

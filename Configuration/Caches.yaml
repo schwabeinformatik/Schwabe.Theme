@@ -1,4 +1,4 @@
-CM_Neos_ThemeModule_Service_Build_CacheFrontend:
+Schwabe_Theme_Service_Build_CacheFrontend:
   frontend: Neos\Cache\Frontend\VariableFrontend
   backend: Neos\Cache\Backend\FileBackend
   backendOptions:

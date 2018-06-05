@@ -1,8 +1,8 @@
 <?php
-namespace CM\Neos\ThemeModule\Service;
+namespace Schwabe\Theme\Service;
 
 /*
- * This file is part of the CM.Neos.ThemeModule package.
+ * This file is part of the Schwabe.Theme package.
  *
  * (c) 2017, Karsten Dambekalns, Flownative GmbH
  *

@@ -25,32 +25,31 @@ This packages allows you to customize your theme package in a backend module.
 
 ## Getting Started
 
-1) Run `composer require --no-update cm/neos-thememodule` *in your site package*
+1) Run `composer require --no-update schwabe/theme` *in your site package*
 2) Run `composer update` *in your project*. If that does not install the package, because your site package is not managed via composer, you need to run the require from step 1 in your project root again.
 3) Run `./flow doctrine:migrate`
 
 Login to your Neos backend and open the `Theme Settings` in the backend menu
 
-Have a look at `CM.Neos.ThemeModule\Configuration\Settings.yaml.example` there are some defaults defined which you can easily override and/or extend to your needs.
+Have a look at `Schwabe.Theme\Configuration\Settings.yaml.example` there are some defaults defined which you can easily override and/or extend to your needs.
 
 ### Adapt Settings.yaml to your needs
 
 In the Settings.yaml your have to declare the location of your scss code and your compiled css.
 
 ```
-CM:
-  Neos:
-    ThemeModule:
-      scss:
-        # folder of your scss code
-        importPaths: 'resource://Vendor.Site.Package/Private/Styles/'
-        # Contains all scss rules and @imports to other files
-        mainScssFile: 'Main.scss'
-        # Expanded, Nested (default), Compressed, Compact, Crunched
-        formatter: 'Leafo\ScssPhp\Formatter\Nested'
-        # Output path has to be in Package Public folder
-        outputPath: 'resource://Vendor.Site.Package/Public/Styles/'
-        outputFilename: 'Main.css'
+Schwabe:
+  Theme:
+    scss:
+      # folder of your scss code
+      importPaths: 'resource://Vendor.Site.Package/Private/Styles/'
+      # Contains all scss rules and @imports to other files
+      mainScssFile: 'Main.scss'
+      # Expanded, Nested (default), Compressed, Compact, Crunched
+      formatter: 'Leafo\ScssPhp\Formatter\Nested'
+      # Output path has to be in Package Public folder
+      outputPath: 'resource://Vendor.Site.Package/Public/Styles/'
+      outputFilename: 'Main.css'
 ```
 
 You can use `{packageKey}` in the `importPaths` and `outputPath` settings, it will be replaced by the current package key automatically. This is the default, so you might not even need to define them.
@@ -62,18 +61,17 @@ You can use `{packageKey}` in the `importPaths` and `outputPath` settings, it wi
 If you have multiple sites in a single Neos setup, you can define site-specific settings as well:
 
 ```
-CM:
-  Neos:
-    ThemeModule:
-      scss:
-        # your default settings here...
+Schwabe:
+  Theme:
+    scss:
+      # your default settings here...
 
-      sites:
-        'Vendor.Other.Site':
-          scss:
-            # override file names for this package
-            mainScssFile: 'Application.scss'
-            outputFilename: 'app.css'
+    sites:
+      'Vendor.Other.Site':
+        scss:
+          # override file names for this package
+          mainScssFile: 'Application.scss'
+          outputFilename: 'app.css'
 ```
 
 ### Defining a SCSS variable
@@ -85,57 +83,56 @@ To define define new variables add them to your `Settings.yaml`. Don't edit the 
 Basic schema, for more details see `Configuration/Settings.yaml` and `Configuration/Settings.yaml.example`:
 
 ```
-CM:
-  Neos:
-    ThemeModule:
-      scss:
-        presetVariables:
-          color: # group
-            label: 'Your Color Settings'
-            type:
-              color:
-                greyBase:
-                  value: '#000000'
-                  scssVariableName: '$grey-base'
-                  label: 'Grey Base'
-                bodyBgColor:
-                  value: '#ffffff'
-                  scssVariableName: '$body-bg'
-                  label: 'Background Color'
-                [...]
+Schwabe:
+  Theme:
+    scss:
+      presetVariables:
+        color: # group
+          label: 'Your Color Settings'
+          type:
+            color:
+              greyBase:
+                value: '#000000'
+                scssVariableName: '$grey-base'
+                label: 'Grey Base'
+              bodyBgColor:
+                value: '#ffffff'
+                scssVariableName: '$body-bg'
+                label: 'Background Color'
+              [...]
 
-          font:
-            label: 'Your Font Settings'
-            type:
-              font:
-                fontFamilySansSerif:
-                  label: 'Font Family Sans Serif'
-                  category: 'sans-serif'
-                  value:
-                    family: 'Arial'
-                  fontFallbackValue: 'Helvetica, sans-serif'
-                  scssVariableName: '$font-family-sans-serif'
-                fontFamilySerif:
-                  label: 'Font Family Serif'
-                  category: 'serif'
-                  value:
-                    family: 'Custom Font from CDN'
-                    variants:
-                      - 'regular'
-                  fontFallbackValue: '"Times New Roman", Times, serif'
-                  scssVariableName: '$font-family-serif'
-                [...]
+        font:
+          label: 'Your Font Settings'
+          type:
+            font:
+              fontFamilySansSerif:
+                label: 'Font Family Sans Serif'
+                category: 'sans-serif'
+                value:
+                  family: 'Arial'
+                fontFallbackValue: 'Helvetica, sans-serif'
+                scssVariableName: '$font-family-sans-serif'
+              fontFamilySerif:
+                label: 'Font Family Serif'
+                category: 'serif'
+                value:
+                  family: 'Custom Font from CDN'
+                  variants:
+                    - 'regular'
+                fontFallbackValue: '"Times New Roman", Times, serif'
+                scssVariableName: '$font-family-serif'
+              [...]
 
-              textfield:
-                fontSizeBase:
-                  value: '14px'
-                  scssVariableName: '$font-size-base'
-                  label: 'Base Font Size in px'
-                headingsFontWeight:
-                  value: '500'
-                  scssVariableName: '$headings-font-weight'
-                  label: 'Headings Font Weight'
-                [...]
+            textfield:
+              fontSizeBase:
+                value: '14px'
+                scssVariableName: '$font-size-base'
+                label: 'Base Font Size in px'
+              headingsFontWeight:
+                value: '500'
+                scssVariableName: '$headings-font-weight'
+                label: 'Headings Font Weight'
+              [...]
 
 ```
 
@@ -188,13 +185,12 @@ You can add additional fonts in your Settings.yaml to make them selectable in th
 The path in your Settings.yaml to add new fonts:
 
 ```
-CM:
-  Neos:
-    ThemeModule:
-      fontOptions:
-        items:
-          -
-            [...]
+Schwabe:
+  Theme:
+    fontOptions:
+      items:
+        -
+          [...]
 ```
 
 There are four fontSource types:
@@ -280,7 +276,7 @@ Add to your node property the validator like this:
     backgroundColor:
       type: string
       validation:
-        '../../CM.Neos.ThemeModule/JavaScript/Inspector/Validators/ColorValidator': []
+        '../../Schwabe.Theme/JavaScript/Inspector/Validators/ColorValidator': []
 ```
 
 > Currently the there's a bug which makes it neccessary to add `../../` this issue is already reported. See [github issue #1562](https://github.com/neos/neos-development-collection/issues/1562)
@@ -292,7 +288,7 @@ Add to your node property the validator like this:
 * rgba: rgba(255,255,255,0.3)
 
 ## THANK YOU for contributing to
-* @kdambekalns 
+* @kdambekalns
 * Schwabe AG, Muttenz, Switzerland
 * @Sebobo
 

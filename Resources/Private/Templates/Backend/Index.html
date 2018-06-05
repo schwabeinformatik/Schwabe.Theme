@@ -1,13 +1,13 @@
 {namespace neos=Neos\Neos\ViewHelpers}
-{namespace cm=CM\Neos\ThemeModule\ViewHelpers}
+{namespace cm=Schwabe\Theme\ViewHelpers}
 
 <div class="neos-content neos-container-fluid">
 
 	<div class="container-fluid">
 		<div class="row" style="padding-bottom: 1em; border-bottom: 1px solid #3f3f3f; margin-bottom: 1em;">
-			<h1>{neos:backend.translate(id: 'headline', package: 'CM.Neos.ThemeModule')}</h1>
+			<h1>{neos:backend.translate(id: 'headline', package: 'Schwabe.Theme')}</h1>
 			<f:form action="index" method="get" class="neos-button-secondary">
-			<p>{neos:backend.translate(id: 'select.targetPackage.label', package: 'CM.Neos.ThemeModule')}: <f:form.select id="targetPackageKeySelector" name="targetPackageKey" options="{availableSitePackages}" value="{settings.packageKey}"/></p>
+			<p>{neos:backend.translate(id: 'select.targetPackage.label', package: 'Schwabe.Theme')}: <f:form.select id="targetPackageKeySelector" name="targetPackageKey" options="{availableSitePackages}" value="{settings.packageKey}"/></p>
 			</f:form>
 		</div>
 		<f:form action="update" method="post" class="neos-button-primary" object="{settings}" name="settings">
@@ -18,18 +18,18 @@
 
 			<!-- Custom SCSS / CSS input -->
 			<div class="row">
-				<h2>{neos:backend.translate(id: 'textarea.scss.label', package: 'CM.Neos.ThemeModule')}</h2>
+				<h2>{neos:backend.translate(id: 'textarea.scss.label', package: 'Schwabe.Theme')}</h2>
 				<!-- Custom scss to append -->
 				<f:form.textarea property="customScss" id="code-scss" rows="10" cols="70"/><br />
 			</div>
 			<div class="row">
-				<h2>{neos:backend.translate(id: 'textarea.css.label', package: 'CM.Neos.ThemeModule')}</h2>
+				<h2>{neos:backend.translate(id: 'textarea.css.label', package: 'Schwabe.Theme')}</h2>
 				<!-- Custom css code to append -->
 				<f:form.textarea property="customCss" id="code-css" rows="10" cols="70" /><br />
 			</div>
 
 			<div class="row">
-				<button type="submit" title="{neos:backend.translate(id: 'button.save', package: 'CM.Neos.ThemeModule')}" data-neos-toggle="tooltip"><i class="icon-refresh"></i> {neos:backend.translate(id: 'button.save', package: 'CM.Neos.ThemeModule')}</button>
+				<button type="submit" title="{neos:backend.translate(id: 'button.save', package: 'Schwabe.Theme')}" data-neos-toggle="tooltip"><i class="icon-refresh"></i> {neos:backend.translate(id: 'button.save', package: 'Schwabe.Theme')}</button>
 			</div>
 		</f:form>
 	</div>
@@ -88,7 +88,7 @@
 
 <f:section name="typeColor">
 	<div class="form-group">
-		<label class="cm-neos-thememodule-headline" for="{elementKey}">{neos:backend.translate(id: 'input.customSettings.{element.label}.label', package: 'CM.Neos.ThemeModule', value: '{element.label}')}</label>
+		<label class="schwabe-theme-headline" for="{elementKey}">{neos:backend.translate(id: 'input.customSettings.{element.label}.label', package: 'Schwabe.Theme', value: '{element.label}')}</label>
 		<div class="input-group colorpicker-component custom-color">
 			<f:form.textfield name="customSettings[{groupKey}][type][{typeKey}][{elementKey}][value]" id="{elementKey}" class="form-control" value="{element.value}" /><span class="input-group-addon"><i></i></span>
 		</div>
@@ -98,32 +98,32 @@
 
 <f:section name="typeFont">
 	<div class="form-group">
-		<label class="cm-neos-thememodule-headline" for="{elementKey}">{neos:backend.translate(id: 'input.customSettings.{element.label}.label', package: 'CM.Neos.ThemeModule', value: '{element.label}')}</label>
+		<label class="schwabe-theme-headline" for="{elementKey}">{neos:backend.translate(id: 'input.customSettings.{element.label}.label', package: 'Schwabe.Theme', value: '{element.label}')}</label>
 		<div class="input-group custom-font">
 			<f:if condition="{fonts.options}">
 				<f:for each="{fonts.options}" as="optionsByCategory" key="optionsByCategoryKey">
 					<f:if condition="{optionsByCategoryKey} == {element.category}">
 
-						<f:form.select name="customSettings[{groupKey}][type][{typeKey}][{elementKey}][value][family]" data="{category: element.category}" id="{elementKey}" class="cm-neos-thememodule-custom-font-family-selector" options="{optionsByCategory}" optionValueField="family" optionLabelField="family" value="{element.value.family}" />
+						<f:form.select name="customSettings[{groupKey}][type][{typeKey}][{elementKey}][value][family]" data="{category: element.category}" id="{elementKey}" class="schwabe-theme-custom-font-family-selector" options="{optionsByCategory}" optionValueField="family" optionLabelField="family" value="{element.value.family}" />
 						<f:form.hidden name="customSettings[{groupKey}][type][{typeKey}][{elementKey}][scssVariableName]" class="form-control" value="{element.scssVariableName}" />
 
 						<div class="input-group custom-textfield font-fallback-value">
-							<label>{neos:backend.translate(id: 'select.font.fontFallbackValue', package: 'CM.Neos.ThemeModule')}</label>
+							<label>{neos:backend.translate(id: 'select.font.fontFallbackValue', package: 'Schwabe.Theme')}</label>
 							<f:form.textfield name="customSettings[{groupKey}][type][{typeKey}][{elementKey}][fontFallbackValue]" class="form-control" value="{element.fontFallbackValue}" />
 						</div>
 
 						<div id="{elementKey}-root" class="font-extra-root" data-json-fonts="{optionsByCategory -> f:format.json()}">
-							<f:form.hidden name="customSettings[{groupKey}][type][{typeKey}][{elementKey}][value][variants]" class="cm-neos-thememodule-custom-font-family-hidden variants" value="{element.value.variants -> cm:format.json()}" />
+							<f:form.hidden name="customSettings[{groupKey}][type][{typeKey}][{elementKey}][value][variants]" class="schwabe-theme-custom-font-family-hidden variants" value="{element.value.variants -> cm:format.json()}" />
 
 							<!-- variants get rendered by js and hidden value get updated -->
 							<div class="variants">
-								<div class="jq-container" data-label="{neos:backend.translate(id: 'select.font.variants', package: 'CM.Neos.ThemeModule')}">
+								<div class="jq-container" data-label="{neos:backend.translate(id: 'select.font.variants', package: 'Schwabe.Theme')}">
 
 								</div>
 							</div>
 
 							<div class="subsets">
-								<div class="jq-container" data-label="{neos:backend.translate(id: 'select.font.subsets', package: 'CM.Neos.ThemeModule')}">
+								<div class="jq-container" data-label="{neos:backend.translate(id: 'select.font.subsets', package: 'Schwabe.Theme')}">
 
 								</div>
 							</div>
@@ -137,7 +137,7 @@
 
 <f:section name="typeTextfield">
 	<div class="form-group">
-		<label class="cm-neos-thememodule-headline" for="{elementKey}">{neos:backend.translate(id: 'input.customSettings.{element.label}.label', package: 'CM.Neos.ThemeModule', value: '{element.label}')}</label>
+		<label class="schwabe-theme-headline" for="{elementKey}">{neos:backend.translate(id: 'input.customSettings.{element.label}.label', package: 'Schwabe.Theme', value: '{element.label}')}</label>
 		<div class="input-group custom-textfield">
 			<f:form.textfield name="customSettings[{groupKey}][type][{typeKey}][{elementKey}][value]" id="{elementKey}" class="form-control" value="{element.value}" />
 		</div>

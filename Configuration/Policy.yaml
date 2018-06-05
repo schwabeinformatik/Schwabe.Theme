@@ -1,11 +1,11 @@
 privilegeTargets:
   'Neos\Flow\Security\Authorization\Privilege\Method\MethodPrivilege':
-        'CM.Neos.ThemeModule:BackendModule':
-          matcher: 'method(CM\Neos\ThemeModule\Controller\BackendController->.*Action())'
+        'Schwabe.Theme:BackendModule':
+          matcher: 'method(Schwabe\Theme\Controller\BackendController->.*Action())'
 
 roles:
   'Neos.Neos:Administrator':
     privileges:
       -
-        privilegeTarget: 'CM.Neos.ThemeModule:BackendModule'
+        privilegeTarget: 'Schwabe.Theme:BackendModule'
         permission: GRANT

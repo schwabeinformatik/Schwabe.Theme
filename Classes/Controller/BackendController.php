@@ -1,8 +1,8 @@
 <?php
-namespace CM\Neos\ThemeModule\Controller;
+namespace Schwabe\Theme\Controller;
 
 /*
- * This file is part of the CM.Neos.ThemeModule package.
+ * This file is part of the Schwabe.Theme package.
  *
  * (c) 2017, Alexander Kappler
  *
@@ -11,11 +11,11 @@ namespace CM\Neos\ThemeModule\Controller;
  * source code.
  */
 
-use CM\Neos\ThemeModule\Domain\Model\Settings;
-use CM\Neos\ThemeModule\Domain\Repository\SettingsRepository;
-use CM\Neos\ThemeModule\Service\Build;
-use CM\Neos\ThemeModule\Service\Compile;
-use CM\Neos\ThemeModule\Service\Request;
+use Schwabe\Theme\Domain\Model\Settings;
+use Schwabe\Theme\Domain\Repository\SettingsRepository;
+use Schwabe\Theme\Service\Build;
+use Schwabe\Theme\Service\Compile;
+use Schwabe\Theme\Service\Request;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Mvc\Controller\ActionController;
 use Neos\Flow\Package\PackageManagerInterface;
@@ -119,7 +119,7 @@ class BackendController extends ActionController
 
         $this->compileService->compileScss($settings);
 
-        // Make sure all page caches get flushed, in case font settings were changed and CM.Neos.ThemeModule:Font is in use.
+        // Make sure all page caches get flushed, in case font settings were changed and Schwabe.Theme:Font is in use.
         $this->contentCache->flushByTag('DescendantOf_Neos.Neos:Page');
         $this->contentCache->flushByTag('DescendantOf_Neos.NodeTypes:Page');
         $this->contentCache->flushByTag('DescendantOf_Neos.Neos:Document');
@@ -128,7 +128,7 @@ class BackendController extends ActionController
         $this->contentCache->flushByTag('NodeType_Neos.NodeTypes:Page');
         $this->contentCache->flushByTag('NodeType_Neos.Neos:Document');
 
-        $this->redirect('index', 'Backend', 'CM.Neos.ThemeModule', ['targetPackageKey' => $settings->getPackageKey()]);
+        $this->redirect('index', 'Backend', 'Schwabe.Theme', ['targetPackageKey' => $settings->getPackageKey()]);
     }
 
     /**

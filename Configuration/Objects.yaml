@@ -1,4 +1,4 @@
-CM\Neos\ThemeModule\Service\Build:
+Schwabe\Theme\Service\Build:
   properties:
     cacheFrontend:
       object:
@@ -6,4 +6,4 @@ CM\Neos\ThemeModule\Service\Build:
         factoryMethodName: getCache
         arguments:
           1:
-            value: CM_Neos_ThemeModule_Service_Build_CacheFrontend
+            value: Schwabe_Theme_Service_Build_CacheFrontend

@@ -1,90 +1,89 @@
-CM:
-  Neos:
-    ThemeModule:
-      # Add google fonts
-      addGoogleFonts: true
+Schwabe:
+  Theme:
+    # Add google fonts
+    addGoogleFonts: true
 
-      # Fonts which are available
-      fontOptions: []
+    # Fonts which are available
+    fontOptions: []
 
-      # Theme settings
-      #
-      # The {packageKey} placeholder is replaced by the package key of the site the module works on.
-      #
-      scss:
-        # Contains all scss rules and @imports to other files
-        importPaths: 'resource://{packageKey}/Private/Styles/'
-        mainScssFile: 'Main.scss'
+    # Theme settings
+    #
+    # The {packageKey} placeholder is replaced by the package key of the site the module works on.
+    #
+    scss:
+      # Contains all scss rules and @imports to other files
+      importPaths: 'resource://{packageKey}/Private/Styles/'
+      mainScssFile: 'Main.scss'
 
-        # Expanded, Nested (default), Compressed, Compact, Crunched
-        formatter: 'Leafo\ScssPhp\Formatter\Nested'
+      # Expanded, Nested (default), Compressed, Compact, Crunched
+      formatter: 'Leafo\ScssPhp\Formatter\Nested'
 
-        # Output path has to be in Package Public folder
-        outputPath: 'resource://{packageKey}/Public/Styles/'
-        outputFilename: 'Main.css'
+      # Output path has to be in Package Public folder
+      outputPath: 'resource://{packageKey}/Public/Styles/'
+      outputFilename: 'Main.css'
 
-        # Your scss variables which should be customizeable in the BE module
-        # Add/remove to your needs
-        # Valid types: textfield, color, font (See Settings.yaml.example or Readme.md of details)
-        presetVariables: []
+      # Your scss variables which should be customizeable in the BE module
+      # Add/remove to your needs
+      # Valid types: textfield, color, font (See Settings.yaml.example or Readme.md of details)
+      presetVariables: []
 
-      # Optionally the settings can be placed below "sites", indexed by package key, if more flexibility is needed:
-      #
-      # sites:
-      #   'Acme.AcmeCom':
-      #     fontOptions: ...
-      #     scss: ...
-      #
-      # The site-specific settings will be merged with the "scss" values, so those can be used to define common
-      # default values.
-      sites: []
+    # Optionally the settings can be placed below "sites", indexed by package key, if more flexibility is needed:
+    #
+    # sites:
+    #   'Acme.AcmeCom':
+    #     fontOptions: ...
+    #     scss: ...
+    #
+    # The site-specific settings will be merged with the "scss" values, so those can be used to define common
+    # default values.
+    sites: []
 
 Neos:
   Neos:
     modules:
       administration:
         submodules:
-          themeModule:
+          theme:
             label: 'Theme Settings'
-            controller: 'CM\Neos\ThemeModule\Controller\BackendController'
+            controller: 'Schwabe\Theme\Controller\BackendController'
             description: 'Customize your Theme'
             icon: 'icon-sliders'
-            privilegeTarget: 'CM.Neos.ThemeModule:BackendModule'
+            privilegeTarget: 'Schwabe.Theme:BackendModule'
             additionalResources:
               styleSheets:
                 - 'resource://Neos.Twitter.Bootstrap/Public/3.3/css/bootstrap.css'
-                - 'resource://CM.Neos.ThemeModule/Public/Components/codemirror/lib/codemirror.css'
-                - 'resource://CM.Neos.ThemeModule/Public/Components/codemirror/addon/lint/lint.css'
-                - 'resource://CM.Neos.ThemeModule/Public/Components/codemirror/addon/fold/foldgutter.css'
-                - 'resource://CM.Neos.ThemeModule/Public/Components/codemirror/addon/hint/show-hint.css'
-                - 'resource://CM.Neos.ThemeModule/Public/Components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css'
-                - 'resource://CM.Neos.ThemeModule/Public/Styles/ThemeModule.css'
+                - 'resource://Schwabe.Theme/Public/Components/codemirror/lib/codemirror.css'
+                - 'resource://Schwabe.Theme/Public/Components/codemirror/addon/lint/lint.css'
+                - 'resource://Schwabe.Theme/Public/Components/codemirror/addon/fold/foldgutter.css'
+                - 'resource://Schwabe.Theme/Public/Components/codemirror/addon/hint/show-hint.css'
+                - 'resource://Schwabe.Theme/Public/Components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css'
+                - 'resource://Schwabe.Theme/Public/Styles/Theme.css'
               javaScripts:
-                - 'resource://CM.Neos.ThemeModule/Public/Components/codemirror/lib/codemirror.js'
-                - 'resource://CM.Neos.ThemeModule/Public/Components/codemirror/addon/fold/foldcode.js'
-                - 'resource://CM.Neos.ThemeModule/Public/Components/codemirror/addon/fold/foldgutter.js'
-                - 'resource://CM.Neos.ThemeModule/Public/Components/codemirror/addon/fold/brace-fold.js'
-                - 'resource://CM.Neos.ThemeModule/Public/Components/codemirror/addon/fold/comment-fold.js'
-                - 'resource://CM.Neos.ThemeModule/Public/Components/codemirror/addon/fold/indent-fold.js'
-                - 'resource://CM.Neos.ThemeModule/Public/Components/codemirror/addon/lint/lint.js'
-                - 'resource://CM.Neos.ThemeModule/Public/Components/codemirror/addon/lint/css-lint.js'
-                - 'resource://CM.Neos.ThemeModule/Public/Components/codemirror/addon/edit/trailingspace.js'
-                - 'resource://CM.Neos.ThemeModule/Public/Components/codemirror/addon/edit/closebrackets.js'
-                - 'resource://CM.Neos.ThemeModule/Public/Components/codemirror/addon/edit/matchbrackets.js'
-                - 'resource://CM.Neos.ThemeModule/Public/Components/codemirror/addon/hint/show-hint.js'
-                - 'resource://CM.Neos.ThemeModule/Public/Components/codemirror/addon/hint/css-hint.js'
-                - 'resource://CM.Neos.ThemeModule/Public/Components/codemirror-scss-linter/scsslint.js'
-                - 'resource://CM.Neos.ThemeModule/Public/Components/codemirror-scss-linter/scss-lint.js'
-                - 'resource://CM.Neos.ThemeModule/Public/Components/codemirror/mode/css/css.js'
-                - 'resource://CM.Neos.ThemeModule/Public/Components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js'
-                - 'resource://CM.Neos.ThemeModule/Public/JavaScript/fontSelector.js'
-                - 'resource://CM.Neos.ThemeModule/Public/JavaScript/Main.js'
+                - 'resource://Schwabe.Theme/Public/Components/codemirror/lib/codemirror.js'
+                - 'resource://Schwabe.Theme/Public/Components/codemirror/addon/fold/foldcode.js'
+                - 'resource://Schwabe.Theme/Public/Components/codemirror/addon/fold/foldgutter.js'
+                - 'resource://Schwabe.Theme/Public/Components/codemirror/addon/fold/brace-fold.js'
+                - 'resource://Schwabe.Theme/Public/Components/codemirror/addon/fold/comment-fold.js'
+                - 'resource://Schwabe.Theme/Public/Components/codemirror/addon/fold/indent-fold.js'
+                - 'resource://Schwabe.Theme/Public/Components/codemirror/addon/lint/lint.js'
+                - 'resource://Schwabe.Theme/Public/Components/codemirror/addon/lint/css-lint.js'
+                - 'resource://Schwabe.Theme/Public/Components/codemirror/addon/edit/trailingspace.js'
+                - 'resource://Schwabe.Theme/Public/Components/codemirror/addon/edit/closebrackets.js'
+                - 'resource://Schwabe.Theme/Public/Components/codemirror/addon/edit/matchbrackets.js'
+                - 'resource://Schwabe.Theme/Public/Components/codemirror/addon/hint/show-hint.js'
+                - 'resource://Schwabe.Theme/Public/Components/codemirror/addon/hint/css-hint.js'
+                - 'resource://Schwabe.Theme/Public/Components/codemirror-scss-linter/scsslint.js'
+                - 'resource://Schwabe.Theme/Public/Components/codemirror-scss-linter/scss-lint.js'
+                - 'resource://Schwabe.Theme/Public/Components/codemirror/mode/css/css.js'
+                - 'resource://Schwabe.Theme/Public/Components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js'
+                - 'resource://Schwabe.Theme/Public/JavaScript/fontSelector.js'
+                - 'resource://Schwabe.Theme/Public/JavaScript/Main.js'
     userInterface:
       requireJsPathMapping:
-        'CM.Neos.ThemeModule/Validation': 'resource://CM.Neos.ThemeModule/Public/JavaScript/Inspector/Validators'
+        'Schwabe.Theme/Validation': 'resource://Schwabe.Theme/Public/JavaScript/Inspector/Validators'
       translation:
         autoInclude:
-          'CM.Neos.ThemeModule': ['*']
+          'Schwabe.Theme': ['*']
     fusion:
       autoInclude:
-        CM.Neos.ThemeModule: true
+        Schwabe.Theme: true

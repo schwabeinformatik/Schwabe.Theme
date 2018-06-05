@@ -1,5 +1,5 @@
-prototype(CM.Neos.ThemeModule:Font){
-    @class = 'CM\\Neos\\ThemeModule\\Fusion\\FontImplementation'
+prototype(Schwabe.Theme:Font){
+    @class = 'Schwabe\\Theme\\Fusion\\FontImplementation'
     url = ''
     variants = ''
     subsets = ''
@@ -7,7 +7,7 @@ prototype(CM.Neos.ThemeModule:Font){
 }
 
 prototype(Neos.Neos:Page) {
-    head.cmfont = CM.Neos.ThemeModule:Font
+    head.cmfont = Schwabe.Theme:Font
     head.cmfont {
         @position = 'after titleTag'
     }
