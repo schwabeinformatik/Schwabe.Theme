@@ -1,5 +1,5 @@
 {namespace neos=Neos\Neos\ViewHelpers}
-{namespace cm=Schwabe\Theme\ViewHelpers}
+{namespace theme=Schwabe\Theme\ViewHelpers}
 
 <div class="neos-content neos-container-fluid">
 
@@ -101,35 +101,30 @@
 		<label class="schwabe-theme-headline" for="{elementKey}">{neos:backend.translate(id: 'input.customSettings.{element.label}.label', package: 'Schwabe.Theme', value: '{element.label}')}</label>
 		<div class="input-group custom-font">
 			<f:if condition="{fonts.options}">
-				<f:for each="{fonts.options}" as="optionsByCategory" key="optionsByCategoryKey">
-					<f:if condition="{optionsByCategoryKey} == {element.category}">
+				<f:form.select name="customSettings[{groupKey}][type][{typeKey}][{elementKey}][value][family]" data="{category: element.category}" id="{elementKey}" class="schwabe-theme-custom-font-family-selector" options="{theme:combineOptions(options: fonts.options, category: element.category)}" optionValueField="family" optionLabelField="family" value="{element.value.family}" />
+				<f:form.hidden name="customSettings[{groupKey}][type][{typeKey}][{elementKey}][scssVariableName]" class="form-control" value="{element.scssVariableName}" />
 
-						<f:form.select name="customSettings[{groupKey}][type][{typeKey}][{elementKey}][value][family]" data="{category: element.category}" id="{elementKey}" class="schwabe-theme-custom-font-family-selector" options="{optionsByCategory}" optionValueField="family" optionLabelField="family" value="{element.value.family}" />
-						<f:form.hidden name="customSettings[{groupKey}][type][{typeKey}][{elementKey}][scssVariableName]" class="form-control" value="{element.scssVariableName}" />
+				<div class="input-group custom-textfield font-fallback-value">
+					<label>{neos:backend.translate(id: 'select.font.fontFallbackValue', package: 'Schwabe.Theme')}</label>
+					<f:form.textfield name="customSettings[{groupKey}][type][{typeKey}][{elementKey}][fontFallbackValue]" class="form-control" value="{element.fontFallbackValue}" />
+				</div>
 
-						<div class="input-group custom-textfield font-fallback-value">
-							<label>{neos:backend.translate(id: 'select.font.fontFallbackValue', package: 'Schwabe.Theme')}</label>
-							<f:form.textfield name="customSettings[{groupKey}][type][{typeKey}][{elementKey}][fontFallbackValue]" class="form-control" value="{element.fontFallbackValue}" />
+				<div id="{elementKey}-root" class="font-extra-root" data-json-fonts="{theme:combineOptions(options: fonts.options, category: element.category) -> f:format.json()}">
+					<f:form.hidden name="customSettings[{groupKey}][type][{typeKey}][{elementKey}][value][variants]" class="schwabe-theme-custom-font-family-hidden variants" value="{element.value.variants -> theme:format.json()}" />
+
+					<!-- variants get rendered by js and hidden value get updated -->
+					<div class="variants">
+						<div class="jq-container" data-label="{neos:backend.translate(id: 'select.font.variants', package: 'Schwabe.Theme')}">
+
 						</div>
+					</div>
 
-						<div id="{elementKey}-root" class="font-extra-root" data-json-fonts="{optionsByCategory -> f:format.json()}">
-							<f:form.hidden name="customSettings[{groupKey}][type][{typeKey}][{elementKey}][value][variants]" class="schwabe-theme-custom-font-family-hidden variants" value="{element.value.variants -> cm:format.json()}" />
+					<div class="subsets">
+						<div class="jq-container" data-label="{neos:backend.translate(id: 'select.font.subsets', package: 'Schwabe.Theme')}">
 
-							<!-- variants get rendered by js and hidden value get updated -->
-							<div class="variants">
-								<div class="jq-container" data-label="{neos:backend.translate(id: 'select.font.variants', package: 'Schwabe.Theme')}">
-
-								</div>
-							</div>
-
-							<div class="subsets">
-								<div class="jq-container" data-label="{neos:backend.translate(id: 'select.font.subsets', package: 'Schwabe.Theme')}">
-
-								</div>
-							</div>
 						</div>
-					</f:if>
-				</f:for>
+					</div>
+				</div>
 			</f:if>
 		</div>
 	</div>
