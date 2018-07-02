@@ -18,6 +18,7 @@ use Schwabe\Theme\Service\Compile;
 use Schwabe\Theme\Service\Request;
 use Neos\Flow\Annotations as Flow;
 use Neos\Fusion\FusionObjects\AbstractFusionObject;
+use Neos\Utility\Arrays;
 
 class FontImplementation extends AbstractFusionObject
 {
@@ -60,6 +61,13 @@ class FontImplementation extends AbstractFusionObject
      */
     public function evaluate()
     {
+        $currentSitePackageKey = $this->requestService->getCurrentSitePackageKey();
+        $customSettings = $this->settingsRepository->findByIdentifier($currentSitePackageKey)->getCustomSettings();
+
+        if (!isset($customSettings['font']) || !isset($customSettings['font']['type']) || !isset($customSettings['font']['type']['font'])) {
+            return null;
+        }
+
         if ($this->configuration === null) {
             return null;
         }
@@ -72,7 +80,7 @@ class FontImplementation extends AbstractFusionObject
             return null;
         }
 
-        $currentSitePackageKey = $this->requestService->getCurrentSitePackageKey();
+        $fontSettings = Arrays::arrayMergeRecursiveOverrule($fontSettings, $customSettings['font']['type']['font']);
         $fonts = $this->buildService->buildFontOptions($currentSitePackageKey);
 
         if (!isset($fonts) || !is_array($fonts) || count($fonts) === 0) {
@@ -187,7 +195,8 @@ class FontImplementation extends AbstractFusionObject
             $link .= str_replace(' ', '+', $googleFont['settings']['value']['family']);
 
             $variants = json_decode($googleFont['settings']['value']['variants']);
-            if (count($variants) > 0) {
+
+            if (isset($variants) && count($variants) > 0) {
                 $link .= ':' . implode(",", $variants);
             }
 
