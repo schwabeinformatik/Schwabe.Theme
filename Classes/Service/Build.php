@@ -163,6 +163,7 @@ class Build
         } else {
             $requestUrl = self::GWF_SERVER . '?key=' . $this->configuration['apiKey'];
             $this->browser->setRequestEngine($this->browserRequestEngine);
+						$this->browser->addAutomaticRequestHeader('referer', $this->getHost());
             $response = $this->browser->request($requestUrl);
 
             if ($response->getStatusCode() == 200) {
