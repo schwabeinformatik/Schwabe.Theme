@@ -2,6 +2,7 @@ Schwabe:
   Theme:
     # Add google fonts
     addGoogleFonts: true
+    apiKey: ''
 
     # Fonts which are available
     fontOptions: []

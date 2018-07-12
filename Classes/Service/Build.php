@@ -28,8 +28,7 @@ use Neos\Utility\Arrays;
 class Build
 {
     const CACHE_IDENTIFIER = 'schwabe-theme-fonts-json';
-    const GWF_SERVER = 'http://gwf.coders.market/api/v1';
-    const TOKEN = '061207df18a4dcaa21e2a893ca160e87fcc46227';
+    const GWF_SERVER = 'https://www.googleapis.com/webfonts/v1/webfonts';
 
     /**
      * @Flow\InjectConfiguration(package="Schwabe.Theme")
@@ -155,21 +154,22 @@ class Build
      */
     protected function getGoogleWebfonts(): array
     {
-        if ($this->cacheFrontend->has(self::CACHE_IDENTIFIER)) {
-            $cachedResponse = $this->cacheFrontend->get(self::CACHE_IDENTIFIER);
+				if ($this->configuration['apiKey'] == '') {
+						return [];
+				}
 
-            return $cachedResponse;
+        if ($this->cacheFrontend->has(self::CACHE_IDENTIFIER)) {
+            return $this->cacheFrontend->get(self::CACHE_IDENTIFIER);
         } else {
-            $requestUrl = self::GWF_SERVER . '?token=' . self::TOKEN;
+            $requestUrl = self::GWF_SERVER . '?key=' . $this->configuration['apiKey'];
             $this->browser->setRequestEngine($this->browserRequestEngine);
-            $this->browser->addAutomaticRequestHeader('Cntm', $this->getHost());
             $response = $this->browser->request($requestUrl);
 
             if ($response->getStatusCode() == 200) {
                 $fontsArray = json_decode($response->getContent(), true);
                 $this->cacheFrontend->set(self::CACHE_IDENTIFIER, $fontsArray);
 
-                return $fontsArray;
+                return isset($fontsArray) ? $fontsArray : [];
             }
         }
 
